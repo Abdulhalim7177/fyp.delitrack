@@ -13,8 +13,18 @@ export function CTASection() {
           className="glass-card p-8 md:p-12 rounded-3xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{
+            y: -10,
+            rotateX: 10,
+            rotateY: 10,
+            transition: { duration: 0.3 }
+          }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
           viewport={{ once: true }}
+          style={{
+            transformStyle: "preserve-3d",
+            perspective: "1000px"
+          }}
         >
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
             Ready to Transform Your Deliveries?

@@ -29,7 +29,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="w-full py-16 md:py-20">
+    <section id="testimonials" className="w-full py-16 md:py-20">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
@@ -47,8 +47,18 @@ export function Testimonials() {
               className="glass-card p-6 rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                y: -10,
+                rotateX: 10,
+                rotateY: 10,
+                transition: { duration: 0.3 }
+              }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
               viewport={{ once: true }}
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">

@@ -26,7 +26,7 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="w-full py-12 md:py-20">
+    <section id="how-it-works" className="w-full py-12 md:py-20">
       <div className="container mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-foreground">
           Get Started in 3 Simple Steps
@@ -42,8 +42,18 @@ export function HowItWorks() {
               className="glass-card flex flex-col items-center p-6 sm:p-8 text-center rounded-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                y: -10,
+                rotateX: 10,
+                rotateY: 10,
+                transition: { duration: 0.3 }
+              }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
               viewport={{ once: true }}
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
               <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary text-primary-foreground font-bold text-xl sm:text-2xl mx-auto mb-4 sm:mb-6">
                 {item.step}

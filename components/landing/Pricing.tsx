@@ -38,7 +38,7 @@ const pricingPlans = [
 
 export function Pricing() {
   return (
-    <section className="w-full py-16 md:py-20">
+    <section id="pricing" className="w-full py-16 md:py-20">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
@@ -56,8 +56,18 @@ export function Pricing() {
               className={`glass-card rounded-lg p-8 ${plan.popular ? 'border-primary' : ''}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                y: -10,
+                rotateX: 10,
+                rotateY: 10,
+                transition: { duration: 0.3 }
+              }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
               viewport={{ once: true }}
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
               {plan.popular && (
                 <div className="text-center mb-4">

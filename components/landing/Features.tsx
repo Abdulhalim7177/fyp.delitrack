@@ -31,7 +31,7 @@ const features = [
 
 export function Features() {
   return (
-    <section className="w-full py-12 md:py-20">
+    <section id="features" className="w-full py-12 md:py-20">
       <div className="container mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-foreground">
@@ -49,11 +49,21 @@ export function Features() {
               className="h-full"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5, rotate: 1 }}
+              whileHover={{
+                y: -10,
+                rotateX: 10,
+                rotateY: 10,
+                transition: { duration: 0.3 }
+              }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               viewport={{ once: true }}
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
-              <Card className="glass-card p-6 sm:p-8 rounded-lg h-full flex flex-col">
+              <Card className="glass-card p-6 sm:p-8 rounded-lg h-full flex flex-col"
+                style={{ transform: "translateZ(0)" }}>
                 <CardHeader className="flex flex-row items-center gap-3 sm:gap-4 pb-4">
                   <div className="p-3 rounded-full bg-primary text-primary-foreground">
                     <feature.icon className="h-6 w-6" />

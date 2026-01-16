@@ -24,6 +24,28 @@ export function Navbar() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    // Close mobile menu if open
+    setIsMenuOpen(false);
+
+    // Extract the section ID from the href
+    const targetId = href.substring(1); // Remove the '#' symbol
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const offset = 80; // Account for fixed header height
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <nav
       className={`w-full sticky top-0 z-50 transition-all duration-300 ${
@@ -41,10 +63,10 @@ export function Navbar() {
         </Link>
 
         <div className="hidden md:flex gap-6 items-center">
-          <Link href="#features" className="text-foreground/80 hover:text-primary">Features</Link>
-          <Link href="#how-it-works" className="text-foreground/80 hover:text-primary">How it Works</Link>
-          <Link href="#pricing" className="text-foreground/80 hover:text-primary">Pricing</Link>
-          <Link href="#testimonials" className="text-foreground/80 hover:text-primary">Testimonials</Link>
+          <a href="#features" className="text-foreground/80 hover:text-primary cursor-pointer" onClick={(e) => scrollToSection(e, '#features')}>Features</a>
+          <a href="#how-it-works" className="text-foreground/80 hover:text-primary cursor-pointer" onClick={(e) => scrollToSection(e, '#how-it-works')}>How it Works</a>
+          <a href="#pricing" className="text-foreground/80 hover:text-primary cursor-pointer" onClick={(e) => scrollToSection(e, '#pricing')}>Pricing</a>
+          <a href="#testimonials" className="text-foreground/80 hover:text-primary cursor-pointer" onClick={(e) => scrollToSection(e, '#testimonials')}>Testimonials</a>
         </div>
 
         <div className="hidden md:flex gap-4 items-center">
@@ -79,10 +101,10 @@ export function Navbar() {
             exit="hidden"
           >
             <div className="flex flex-col p-6 space-y-5">
-              <Link href="#features" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>Features</Link>
-              <Link href="#how-it-works" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>How it Works</Link>
-              <Link href="#pricing" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
-              <Link href="#testimonials" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>Testimonials</Link>
+              <a href="#features" className="text-foreground/80 py-3 text-lg cursor-pointer" onClick={(e) => scrollToSection(e, '#features')}>Features</a>
+              <a href="#how-it-works" className="text-foreground/80 py-3 text-lg cursor-pointer" onClick={(e) => scrollToSection(e, '#how-it-works')}>How it Works</a>
+              <a href="#pricing" className="text-foreground/80 py-3 text-lg cursor-pointer" onClick={(e) => scrollToSection(e, '#pricing')}>Pricing</a>
+              <a href="#testimonials" className="text-foreground/80 py-3 text-lg cursor-pointer" onClick={(e) => scrollToSection(e, '#testimonials')}>Testimonials</a>
               <div className="border-t border-foreground/10 pt-5 mt-5">
                 <div className="flex flex-col gap-4">
                   <Link href="/auth/login">

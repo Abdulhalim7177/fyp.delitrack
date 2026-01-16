@@ -59,7 +59,9 @@ export function UserTypes() {
       },
     },
     hover: {
-      scale: 1.05,
+      y: -10,
+      rotateX: 10,
+      rotateY: 10,
       transition: {
         duration: 0.3,
       },
@@ -90,8 +92,13 @@ export function UserTypes() {
               key={user.type}
               variants={itemVariants}
               whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
-              <Card className="glass-card flex flex-col h-full p-8 border border-white/20 backdrop-blur-lg text-center">
+              <Card className="glass-card flex flex-col h-full p-8 border border-white/20 backdrop-blur-lg text-center"
+                style={{ transform: "translateZ(0)" }}>
                 <CardHeader>
                   <div className="flex justify-center mb-4">
                     <div className="p-4 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg">

@@ -42,7 +42,9 @@ export function StatsBar() {
       },
     },
     hover: {
-      scale: 1.05,
+      y: -10,
+      rotateX: 10,
+      rotateY: 10,
       transition: {
         duration: 0.3,
       },
@@ -63,8 +65,13 @@ export function StatsBar() {
               key={stat.label}
               variants={itemVariants}
               whileHover="hover"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
-              <Card className="glass-card flex flex-col items-center p-4 sm:p-6 text-center w-full border border-white/20 backdrop-blur-lg h-full">
+              <Card className="glass-card flex flex-col items-center p-4 sm:p-6 text-center w-full border border-white/20 backdrop-blur-lg h-full"
+                style={{ transform: "translateZ(0)" }}>
                 <stat.icon className="h-6 sm:h-8 w-6 sm:w-8 text-blue-500 mb-3 sm:mb-4" />
                 <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                   {animatedValues[index]}
