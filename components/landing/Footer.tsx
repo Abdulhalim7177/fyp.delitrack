@@ -33,7 +33,7 @@ const socialLinks = [
   { name: "LinkedIn", href: "#", icon: Linkedin },
 ];
 
-export function Footer() {
+export function Footer({ className }: { className?: string }) {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
@@ -41,75 +41,75 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="w-full py-20 bg-gray-900 text-gray-400 dark">
+    <footer className={`w-full py-12 sm:py-16 md:py-20 glass-effect ${className || ''}`}>
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12">
           <div className="col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="relative p-3 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-lg">
-                <Package className="h-7 w-7 text-white" />
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+              <div className="relative p-3 rounded-2xl bg-primary shadow-lg">
+                <Package className="h-6 sm:h-7 w-6 sm:w-7 text-primary-foreground" />
               </div>
-              <span className="font-bold text-2xl text-white">
+              <span className="font-bold text-xl sm:text-2xl text-foreground">
                 Lifterico
               </span>
             </div>
-            <p className="text-gray-400 mb-6 max-w-sm">
+            <p className="text-foreground/80 mb-4 sm:mb-6 max-w-xs text-sm sm:text-base">
               Smart Delivery Tracking for Nigerian Businesses.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3 sm:gap-4">
               {socialLinks.map((link) => (
                 <Link
                   href={link.href}
                   key={link.name}
-                  className="p-3 rounded-full bg-gray-800 hover:bg-gray-700"
+                  className="p-2 sm:p-3 rounded-full bg-foreground/10 hover:bg-foreground/20"
                 >
-                  <link.icon className="h-5 w-5 text-gray-400" />
+                  <link.icon className="h-4 sm:h-5 w-4 sm:w-5" />
                 </Link>
               ))}
             </div>
           </div>
 
-          <div>
-            <h4 className="font-bold text-lg text-white mb-6">Product</h4>
-            <ul className="space-y-3">
+          <div className="mt-6 sm:mt-0">
+            <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-foreground">Product</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-blue-500">{link.name}</Link>
+                  <Link href={link.href} className="text-foreground/80 hover:text-primary text-sm sm:text-base">{link.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-lg text-white mb-6">Company</h4>
-            <ul className="space-y-3">
+          <div className="mt-6 sm:mt-0">
+            <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-foreground">Company</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-blue-500">{link.name}</Link>
+                  <Link href={link.href} className="text-foreground/80 hover:text-primary text-sm sm:text-base">{link.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-lg text-white mb-6">Resources</h4>
-            <ul className="space-y-3">
+          <div className="mt-6 sm:mt-0">
+            <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-foreground">Resources</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-blue-500">{link.name}</Link>
+                  <Link href={link.href} className="text-foreground/80 hover:text-primary text-sm sm:text-base">{link.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+        <div className="mt-8 sm:mt-12 pt-6 border-t border-foreground/20 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-foreground/80 text-xs sm:text-sm">
             &copy; {currentYear} Lifterico. All rights reserved.
           </p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex flex-wrap justify-center gap-4 mt-3 md:mt-0">
             {footerLinks.legal.map((link) => (
-              <Link key={link.name} href={link.href} className="text-gray-400 hover:text-blue-500 text-sm">{link.name}</Link>
+              <Link key={link.name} href={link.href} className="text-foreground/80 hover:text-primary text-xs sm:text-sm">{link.name}</Link>
             ))}
           </div>
         </div>

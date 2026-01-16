@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -29,83 +28,46 @@ const testimonials = [
 ];
 
 export function Testimonials() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-      },
-    },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.3,
-      },
-    }
-  };
-
   return (
-    <section className="w-full py-20 md:py-32">
+    <section className="w-full py-16 md:py-20">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
             Trusted by Businesses Across Nigeria
           </h2>
-          <p className="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="mt-6 text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto">
             Hear from businesses who have transformed their delivery operations with Lifterico.
           </p>
         </div>
 
-        <motion.div
-          className="grid gap-8 md:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.name}
-              variants={itemVariants}
-              whileHover="hover"
+              className="glass-card p-6 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              viewport={{ once: true }}
             >
-              <Card className="glass-card flex flex-col h-full p-6 border border-white/20 backdrop-blur-lg">
-                <CardHeader className="flex flex-row items-center gap-4 pb-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900 dark:text-white">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">{testimonial.business}</p>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 italic">
-                    "{testimonial.quote}"
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <p className="font-bold text-foreground">{testimonial.name}</p>
+                  <p className="text-sm text-foreground/80">{testimonial.business}</p>
+                </div>
+              </div>
+              <div className="flex mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="italic text-foreground/80">"{testimonial.quote}"</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

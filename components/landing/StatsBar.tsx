@@ -51,9 +51,9 @@ export function StatsBar() {
 
 
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-12 sm:py-16">
       <div className="container mx-auto">
-        <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-6"
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
          variants={containerVariants}
          initial="hidden"
          whileInView="visible"
@@ -64,12 +64,12 @@ export function StatsBar() {
               variants={itemVariants}
               whileHover="hover"
             >
-              <Card className="glass-card flex flex-col items-center p-6 text-center w-full border border-white/20 backdrop-blur-lg">
-                <stat.icon className="h-8 w-8 text-blue-500 mb-4" />
-                <p className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              <Card className="glass-card flex flex-col items-center p-4 sm:p-6 text-center w-full border border-white/20 backdrop-blur-lg h-full">
+                <stat.icon className="h-6 sm:h-8 w-6 sm:w-8 text-blue-500 mb-3 sm:mb-4" />
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                   {animatedValues[index]}
                 </p>
-                <p className="mt-2 text-gray-600 dark:text-gray-400">
+                <p className="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400">
                   {stat.label}
                 </p>
               </Card>

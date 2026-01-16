@@ -27,24 +27,24 @@ export function Navbar() {
   return (
     <nav
       className={`w-full sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-effect backdrop-blur-xl py-3 border-b border-white/10" : "py-4"
+        scrolled ? "glass-effect" : "bg-background"
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
+      <div className="container mx-auto flex justify-between items-center px-4 md:px-6 py-3">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative p-3 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
-            <Package className="h-7 w-7 text-white" />
+          <div className="relative p-3 rounded-2xl bg-primary shadow-lg">
+            <Package className="h-7 w-7 text-primary-foreground" />
           </div>
-          <span className="font-bold text-2xl text-gray-900 dark:text-white">
+          <span className="font-bold text-2xl text-foreground">
             Lifterico
           </span>
         </Link>
 
         <div className="hidden md:flex gap-6 items-center">
-          <Link href="#features" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">Features</Link>
-          <Link href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">How it Works</Link>
-          <Link href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">Pricing</Link>
-          <Link href="#testimonials" className="text-gray-600 dark:text-gray-300 hover:text-blue-500">Testimonials</Link>
+          <Link href="#features" className="text-foreground/80 hover:text-primary">Features</Link>
+          <Link href="#how-it-works" className="text-foreground/80 hover:text-primary">How it Works</Link>
+          <Link href="#pricing" className="text-foreground/80 hover:text-primary">Pricing</Link>
+          <Link href="#testimonials" className="text-foreground/80 hover:text-primary">Testimonials</Link>
         </div>
 
         <div className="hidden md:flex gap-4 items-center">
@@ -52,12 +52,12 @@ export function Navbar() {
             <Button variant="ghost">Login</Button>
           </Link>
           <Link href="/auth/sign-up">
-            <Button className="bg-blue-500 hover:bg-blue-600">Get Started</Button>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">Get Started</Button>
           </Link>
           <ThemeSwitcher />
         </div>
 
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-2">
           <ThemeSwitcher />
           <Button
             variant="ghost"
@@ -72,24 +72,24 @@ export function Navbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden glass-effect backdrop-blur-xl mt-4 mx-4 rounded-2xl border border-white/20"
+            className="md:hidden glass-effect mt-2 mx-4 rounded-2xl overflow-hidden"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
           >
-            <div className="flex flex-col p-6 space-y-4">
-              <Link href="#features" className="text-gray-600 dark:text-gray-300" onClick={() => setIsMenuOpen(false)}>Features</Link>
-              <Link href="#how-it-works" className="text-gray-600 dark:text-gray-300" onClick={() => setIsMenuOpen(false)}>How it Works</Link>
-              <Link href="#pricing" className="text-gray-600 dark:text-gray-300" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
-              <Link href="#testimonials" className="text-gray-600 dark:text-gray-300" onClick={() => setIsMenuOpen(false)}>Testimonials</Link>
-              <div className="border-t border-white/20 pt-4 mt-4">
-                <div className="flex flex-col gap-3">
+            <div className="flex flex-col p-6 space-y-5">
+              <Link href="#features" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>Features</Link>
+              <Link href="#how-it-works" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>How it Works</Link>
+              <Link href="#pricing" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
+              <Link href="#testimonials" className="text-foreground/80 py-3 text-lg" onClick={() => setIsMenuOpen(false)}>Testimonials</Link>
+              <div className="border-t border-foreground/10 pt-5 mt-5">
+                <div className="flex flex-col gap-4">
                   <Link href="/auth/login">
-                    <Button variant="outline" className="w-full" onClick={() => setIsMenuOpen(false)}>Login</Button>
+                    <Button variant="outline" className="w-full py-6 text-base" onClick={() => setIsMenuOpen(false)}>Login</Button>
                   </Link>
                   <Link href="/auth/sign-up">
-                    <Button className="w-full bg-blue-500">Get Started</Button>
+                    <Button className="w-full bg-primary py-6 text-base" onClick={() => setIsMenuOpen(false)}>Get Started</Button>
                   </Link>
                 </div>
               </div>
