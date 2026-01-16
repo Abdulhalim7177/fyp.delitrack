@@ -1,0 +1,82 @@
+"use client";
+
+import { Card } from "@/components/ui/card";
+import { useEffect, useState } from "react";
+import { Package, Building2, Bike, Star } from "lucide-react";
+import { motion } from "framer-motion";
+
+export function StatsBar() {
+  const stats = [
+    { value: "1000+", label: "Deliveries Completed", icon: Package },
+    { value: "500+", label: "Active Businesses", icon: Building2 },
+    { value: "200+", label: "Verified Riders", icon: Bike },
+    { value: "4.8★", label: "Average Rating", icon: Star },
+  ];
+
+  const [animatedValues, setAnimatedValues] = useState(Array(stats.length).fill(0));
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedValues(stats.map(stat => stat.value));
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.3,
+      },
+    }
+  };
+
+
+  return (
+    <section className="w-full py-16">
+      <div className="container mx-auto">
+        <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-6"
+         variants={containerVariants}
+         initial="hidden"
+         whileInView="visible"
+         viewport={{ once: true }}>
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              variants={itemVariants}
+              whileHover="hover"
+            >
+              <Card className="glass-card flex flex-col items-center p-6 text-center w-full border border-white/20 backdrop-blur-lg">
+                <stat.icon className="h-8 w-8 text-blue-500 mb-4" />
+                <p className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                  {animatedValues[index]}
+                </p>
+                <p className="mt-2 text-gray-600 dark:text-gray-400">
+                  {stat.label}
+                </p>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
